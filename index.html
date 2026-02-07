@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Question for You</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: url("nj_jpg.jpg") no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+            color: #333;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            backdrop-filter: blur(1px);
+            z-index: 10;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #d81b60;
+            margin-bottom: 20px;
+        }
+
+        #message {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            min-height: 50px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #yesBtn {
+            background-color: #d81b60;
+            color: white;
+            box-shadow: 0 5px 15px rgba(216, 27, 96, 0.4);
+        }
+
+        #yesBtn:hover {
+            transform: scale(1.1);
+        }
+
+        #noBtn {
+            background-color: #b0bec5;
+            color: white;
+            position: relative;
+        }
+
+        /* Floating Hearts Background */
+        .heart {
+            position: absolute;
+            background-color: rgba(210, 247, 2);
+            width: 20px;
+            height: 20px;
+            transform: rotate(-45deg);
+            animation: animateHeart 5s linear infinite;
+        }
+        .heart:before, .heart:after {
+            content: "";
+            position: absolute;
+            background-color: rgb(210, 247, 2);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+        }
+        .heart:before { top: -10px; left: 0; }
+        .heart:after { left: 10px; top: 0; }
+
+        @keyframes animateHeart {
+            0% { transform: translateY(100vh) rotate(-45deg); opacity: 1; }
+            100% { transform: translateY(-100px) rotate(-45deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating hearts container -->
+    <div id="hearts-container"></div>
+    
+
+    <div class="container">
+        <h1>Will You Be Mine?</h1>
+        <p id="message"> Ponnah....💛🧿
+
+Nink ariyalo...enik ninnod orupad snehm ishttam Ane nn.....ariyam...ninte situation oke...arinj thanne Ane ninath....iplm nine ingane snehichond irikka Ane....ath angane thanne ayirikm...snehichond irikkm....
+Ni ente adth.. adjust cheyth nikanno...ente adimma ayi nikanno alla...enik nine vend....parasprm snehiknm...enanganm...pinanganm...manasilakn....orumich life long koode....chirichm... santhoshichm...parasprm thangaym... thanalaym... support aym... swapnangl nadathnm...angane angane....
+Nml thammil Nala bond ind....enik ninym....nink enneym nalapole ariyam....
+Enthoke thanne indaylm...sambavichalm...otta kettode ninna ellamm bangi ayi nadakm...
+Njn pinem...ninod ingane prnjod varanth...enik ninod othiri oruppad ishattane snehmane....
+Ni samaym edth....nanayi aloich...nink ennod anmarthamayi snehm ishtm oke thonnumbo....para...
+Njn kathirikam...alla kathirikm.....
+I Love you...🥰🧿💛</p>
+        
+        <div class="buttons">
+            <button id="yesBtn" onclick="yesSelected()">Yes!💛 </button>
+            <button id="noBtn" onmouseover="moveButton()" onclick="moveButton()">No</button>
+        </div>
+    </div>
+
+    <script>
+        // Typewriter effect
+        const text = "From the moment I met you, my world changed. You are the best thing that ever happened to me. Will you make me the happiest person and be mine forever? ❤️";
+        let index = 0;
+        function typeWriter() {
+            if (index < text.length) {
+                document.getElementById("message").innerHTML += text.charAt(index);
+                index++;
+                setTimeout(typeWriter, 50);
+            }
+        }
+        // Uncomment to activate typewriter
+        // typeWriter();
+
+        // Moving "No" button
+        function moveButton() {
+            const btn = document.getElementById("noBtn");
+            const x = Math.random() * (window.innerWidth - btn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - btn.offsetHeight);
+            btn.style.position = "absolute";
+            btn.style.left = x + "px";
+            btn.style.top = y + "px";
+        }
+
+        // Yes action
+        function yesSelected() {
+            document.querySelector(".container").innerHTML = "<h1>Yay! 💖</h1><p>You just made me the happiest person on Earth!</p>";
+        }
+
+        // Generate hearts
+        function createHearts() {
+            const container = document.getElementById("hearts-container");
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement("div");
+                heart.classList.add("heart");
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+                heart.style.animationDelay = Math.random() * 2 + "s";
+                container.appendChild(heart);
+            }
+        }
+        createHearts();
+    </script>
+</body>
+</html>
